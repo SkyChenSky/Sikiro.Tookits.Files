@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model List<Sikiro.Tookits.Files.Sample.Web.Controllers.UserModel>
+
+<form action="/Excel/Import" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="导入" />
+</form>
+
+<form action="/Excel/Export" method="Get" enctype="multipart/form-data">
+    <input type="submit" value="导出" />
+</form>
+<a href="~/Content/Test.xlsx">下载导入模板</a>
+<table>
+    <tr>
+        <td>手机号</td>
+        <td>Name</td>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Mobile</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    }
+
+</table>
